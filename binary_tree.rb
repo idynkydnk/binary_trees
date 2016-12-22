@@ -14,20 +14,33 @@ class BinaryTree
       lower_middle = middle
       node = @root
       node.value = data[middle]
-      while data[lower_middle - 1]
+      until lower_middle < 0 
+        puts node.value
         node.left = Node.new
-        node.left.value = data[middle - 1]
+        node.left.value = data[lower_middle - 1]
         node.left.parent = node
         node = node.left 
         lower_middle -= 1
+      end
+      node = @root
+      until middle > data.length
+        node.right = Node.new
+        node.right.value = data[middle + 1]
+        node.right.parent = node
+        node = node.right
+        puts node.value
+        middle += 1 
       end
     end
       
   end
 
   def to_s
-    puts @root.value
-    puts @root.left.value
+    node = @root
+    while node.value
+      puts node.value
+      node = node.left
+    end
   end
 
 end
