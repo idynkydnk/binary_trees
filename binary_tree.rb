@@ -7,6 +7,27 @@ class BinaryTree
   end
 
   def build_tree(data)
+    if @root.value.nil?
+      @root.value = data[0]
+    end
+    node = @root
+    (data.length - 1).times do |i|
+      new_node = Node.new
+      new_node.value = data[i + 1]
+      if new_node.value < node.value
+        new_node.right = node
+        node.left = new_node
+      else
+        new_node.left = node
+        node.right = new_node
+      end
+        
+
+      puts i + 1
+    end
+  end
+
+  def old_build_tree(data)
     if data.length == 1
       @root.value = data[0]
     else
