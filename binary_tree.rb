@@ -37,27 +37,30 @@ class BinaryTree
 
   def to_s
     node = @root
-    if node.left
-      to_s_left(node.left)
-    else
+    stack = []
+    ignore_left = false
+    loop do
+      if ignore_left
+        ignore_left = false
+      else
+        if node.left
+          stack << node
+          node = node.left
+          next
+        end
+      end
+
       puts node.value
-    end
 
+      if node.right
+        node = node.right
+        next
+      end
 
+      break if stack.length == 0
+
+      node = stack.pop
+      ignore_left = true
+    end 
   end
-
-  def to_s_left(node)
-    if node.left
-      to_s_left(node.left)
-    else
-      puts node.value
-    end
-
-
-  end
-
-  def to_s_right(node)
-
-  end
-
 end
