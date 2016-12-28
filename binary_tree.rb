@@ -63,4 +63,23 @@ class BinaryTree
       ignore_left = true
     end 
   end
+
+  def breadth_first_search(value)
+    node = @root  
+    if node.value = value
+      return node
+    if node.left
+      node = node.left
+      check
+      if it's not there
+        add node to queue
+
+    if node.right
+      node = node.right
+      check
+      if not add node to queue
+
+        end
+    end 
+  end
 end
