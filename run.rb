@@ -25,3 +25,7 @@ a = [1, 2, 34, 23, 6, 65, 34, 674, 2323, 45, 3, 5, 6, 7, 8]
 x.build_tree(a)
 b = x.depth_first_search(34)
 puts b.value
+puts puts
+
+w = x.dfs_rec(23)
+puts w

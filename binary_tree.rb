@@ -118,8 +118,16 @@ class BinaryTree
     end
   end
 
-  def dfs_rec(node, value)
+  def dfs_rec(value, node = @root, return_node = nil)
+    if node.value == value
+      return_node = node
+      return node
+    end
+    dfs_rec(value, node.left, return_node) if node.left
+    dfs_rec(value, node.right, return_node) if node.right
+    return return_node
     
+  
   end
 
 end
