@@ -67,20 +67,24 @@ class BinaryTree
   def breadth_first_search(value)
     node = @root  
     queue = []
+    end_of_row = true
+    if node.value == value
+      return node
+    end   
+    puts node.value
     loop do
-      if node.value = value
-        return node
-      elsif node.left
-        node = node.left
-      if it's not there
-        add node to queue
-
-    if node.right
-      node = node.right
-      check
-      if not add node to queue
-
-        end
-    end 
+      puts node.left.value if node.left
+      puts node.right.value if node.right
+      queue << node.left if node.left
+      queue << node.right if node.right
+      if queue.empty?
+        puts "we're done!"
+        return nil
+      end
+      node = queue.shift
+            
+    end
   end
+
+
 end
