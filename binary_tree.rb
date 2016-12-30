@@ -64,27 +64,62 @@ class BinaryTree
     end 
   end
 
+  def depth_first_search(value)
+    node = @root
+    stack = []
+    ignore_left = false
+    loop do
+      if ignore_left
+        ignore_left = false
+      else
+        if node.left
+          stack << node
+          node = node.left
+          next
+        end
+      end
+
+      if node.value == value
+        return node
+      end
+
+      if node.right
+        node = node.right
+        next
+      end
+
+      return nil if stack.length == 0
+
+      node = stack.pop
+      ignore_left = true
+    end 
+  
+  end
+
   def breadth_first_search(value)
     node = @root  
     queue = []
-    end_of_row = true
     if node.value == value
       return node
     end   
-    puts node.value
     loop do
-      puts node.left.value if node.left
-      puts node.right.value if node.right
+      if node.left
+        return node.left if node.left.value == value
+      end
+      if node.right
+        return node.right if node.right.value == value
+      end
       queue << node.left if node.left
       queue << node.right if node.right
       if queue.empty?
-        puts "we're done!"
         return nil
       end
       node = queue.shift
-            
     end
   end
 
+  def dfs_rec(node, value)
+    
+  end
 
 end
