@@ -50,14 +50,18 @@ class BinaryTree
         end
       end
 
-      puts node.value
+      print node.value.to_s + ", "
 
       if node.right
         node = node.right
         next
       end
 
-      break if stack.length == 0
+      if stack.length == 0
+        print "end"
+        puts
+        break
+      end
 
       node = stack.pop
       ignore_left = true
@@ -118,16 +122,12 @@ class BinaryTree
     end
   end
 
-  def dfs_rec(value, node = @root, return_node = nil)
-    if node.value == value
-      return_node = node
-      return node
-    end
-    dfs_rec(value, node.left, return_node) if node.left
-    dfs_rec(value, node.right, return_node) if node.right
-    return return_node
-    
-  
+  def dfs_rec(value, node = @root)
+    return nil if node.nil?
+    return node if node.value == value
+    left_node = dfs_rec(value, node.left)
+    right_node = dfs_rec(value, node.right)
+    left_node or right_node
   end
 
 end

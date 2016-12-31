@@ -1,31 +1,21 @@
 require_relative "binary_tree.rb"
 
-x = BinaryTree.new
-a = [1, 2, 3, 4, 5]
-x.build_tree(a)
-x.to_s
+a = BinaryTree.new
+b = [18, 2, 3, 34, 4, 9, 8, 23, 14, 12, 4, 5]
+a.build_tree(b)
+puts "Tree has been built..."
+puts "Printing tree values in order..."
+a.to_s
 puts
+c = a.breadth_first_search(34)
+puts "Breadth first search for a value of 34 found... " + c.to_s
+puts "Value of that node is... " + c.value.to_s
 puts
-y = BinaryTree.new
-a = [2, 5, 3, 9, 1, 4]
-y.build_tree(a)
-y.to_s
-z = BinaryTree.new
-a = [33, 22, 33, 18, 5, 34, 53, 21, 42]
-z.build_tree(a)
+d = a.depth_first_search(12)
+puts "Depth first search for a value of 12 found... " + d.to_s
+puts "Value of that node is... " + d.value.to_s
 puts
-puts
-b = z.breadth_first_search(5)
-puts
-z.to_s
-puts
-puts b.value
-x = BinaryTree.new
-a = [1, 2, 34, 23, 6, 65, 34, 674, 2323, 45, 3, 5, 6, 7, 8]
-x.build_tree(a)
-b = x.depth_first_search(34)
-puts b.value
-puts puts
+e = a.dfs_rec(5)
+puts "Depth first recursive search for a value of 5 found... " + e.to_s
+puts "Value of that node is... " + e.value.to_s
 
-w = x.dfs_rec(23)
-puts w
